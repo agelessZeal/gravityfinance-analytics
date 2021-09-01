@@ -163,7 +163,7 @@ function SideNav({ history }) {
             )}
           </AutoColumn>
           <AutoColumn gap="0.5rem" style={{ marginLeft: '.75rem', marginBottom: '4rem' }}>
-            <HeaderText>
+            {/* <HeaderText>
               <Link href="https://uniswap.org" target="_blank">
                 Uniswap.org
               </Link>
@@ -187,7 +187,7 @@ function SideNav({ history }) {
               <Link href="https://twitter.com/UniswapProtocol" target="_blank">
                 Twitter
               </Link>
-            </HeaderText>
+            </HeaderText> */}
             <Toggle isActive={isDark} toggle={toggleDarkMode} />
           </AutoColumn>
           {!below1180 && (
