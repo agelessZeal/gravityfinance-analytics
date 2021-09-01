@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { isAddress } from '../../utils/index.js'
 import EthereumLogo from '../../assets/eth.png'
 
+
 const BAD_IMAGES = {}
 
 const Inline = styled.div`
@@ -61,6 +62,51 @@ export default function TokenLogo({ address, header = false, size = '24px', ...r
       <StyledEthereumLogo size={size} {...rest}>
         <img
           src={EthereumLogo}
+          style={{
+            boxShadow: '0px 6px 10px rgba(0, 0, 0, 0.075)',
+            borderRadius: '24px',
+          }}
+          alt=""
+        />
+      </StyledEthereumLogo>
+    )
+  }
+
+  if (address?.toLowerCase() === '0x874e178a2f3f3f9d34db862453cd756e7eab0381') {
+    return (
+      <StyledEthereumLogo size={size} {...rest}>
+        <img
+          src={'https://assets.coingecko.com/coins/images/15871/small/GFI-Icon.png'}
+          style={{
+            boxShadow: '0px 6px 10px rgba(0, 0, 0, 0.075)',
+            borderRadius: '24px',
+          }}
+          alt=""
+        />
+      </StyledEthereumLogo>
+    )
+  }
+
+  if (address?.toLowerCase() === '0x692597b009d13c4049a947cab2239b7d6517875f') {
+    return (
+      <StyledEthereumLogo size={size} {...rest}>
+        <img
+          src={'https://raw.githubusercontent.com/sushiswap/icons/master/token/ust.jpg'}
+          style={{
+            boxShadow: '0px 6px 10px rgba(0, 0, 0, 0.075)',
+            borderRadius: '24px',
+          }}
+          alt=""
+        />
+      </StyledEthereumLogo>
+    )
+  }
+
+  if (address?.toLowerCase() === '0x47536f17f4ff30e64a96a7555826b8f9e66ec468') {
+    return (
+      <StyledEthereumLogo size={size} {...rest}>
+        <img
+          src={'https://app.beluga.fi/static/media/logo.70f9bd57.png'}
           style={{
             boxShadow: '0px 6px 10px rgba(0, 0, 0, 0.075)',
             borderRadius: '24px',
