@@ -92,7 +92,7 @@ function AccountPage({ account }) {
   // get data for this account
   const transactions = useUserTransactions(account)
   const positions = useUserPositions(account)
-  const miningPositions = useMiningPositions(account)
+  // const miningPositions = useMiningPositions(account)
 
   // get data for user stats
   const transactionCount = transactions?.swaps?.length + transactions?.burns?.length + transactions?.mints?.length
@@ -321,7 +321,7 @@ function AccountPage({ account }) {
               marginTop: '1.5rem',
             }}
           >
-            {miningPositions && <MiningPositionList miningPositions={miningPositions} />}
+            {/* {miningPositions && <MiningPositionList miningPositions={miningPositions} />}
             {!miningPositions && (
               <AutoColumn gap="8px" justify="flex-start">
                 <TYPE.main>No Staked Liquidity.</TYPE.main>
@@ -329,7 +329,7 @@ function AccountPage({ account }) {
                   <ButtonLight style={{ padding: '4px 6px', borderRadius: '4px' }}>Learn More</ButtonLight>{' '}
                 </AutoRow>{' '}
               </AutoColumn>
-            )}
+            )} */}
           </Panel>
           <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '3rem' }}>
             Transactions
