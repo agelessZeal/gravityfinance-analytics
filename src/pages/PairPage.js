@@ -218,7 +218,8 @@ function PairPage({ pairAddress, history }) {
       <span />
       <Warning
         type={'pair'}
-        show={!dismissed && listedTokens && !(listedTokens.includes(token0?.id) && listedTokens.includes(token1?.id))}
+        // show={!dismissed && listedTokens && !(listedTokens.includes(token0?.id) && listedTokens.includes(token1?.id))}
+        show={false}
         setShow={markAsDismissed}
         address={pairAddress}
       />
@@ -230,9 +231,11 @@ function PairPage({ pairAddress, history }) {
           {!below600 && <Search small={true} />}
         </RowBetween>
         <WarningGrouping
-          disabled={
-            !dismissed && listedTokens && !(listedTokens.includes(token0?.id) && listedTokens.includes(token1?.id))
-          }
+          // disabled={
+          //   !dismissed && listedTokens && !(listedTokens.includes(token0?.id) && listedTokens.includes(token1?.id))
+          // }
+
+          disabled={false }
         >
           <DashboardWrapper>
             <AutoColumn gap="40px" style={{ marginBottom: '1.5rem' }}>
