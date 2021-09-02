@@ -4,6 +4,7 @@ import { isAddress } from '../../utils/index.js'
 import EthereumLogo from '../../assets/eth.png'
 
 
+
 const BAD_IMAGES = {}
 
 const Inline = styled.div`
@@ -57,7 +58,7 @@ export default function TokenLogo({ address, header = false, size = '24px', ...r
     address = '0xc011a72400e58ecd99ee497cf89e3775d4bd732f'
   }
 
-  if (address?.toLowerCase() === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2') {
+  if (address?.toLowerCase() === '0x7ceb23fd6bc0add59e62ac25578270cff1b9f619') {
     return (
       <StyledEthereumLogo size={size} {...rest}>
         <img
@@ -117,9 +118,14 @@ export default function TokenLogo({ address, header = false, size = '24px', ...r
     )
   }
 
-  const path = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${isAddress(
+
+  const path = `https://raw.githubusercontent.com/sushiswap/assets/master/blockchains/polygon/assets/${isAddress(
     address
   )}/logo.png`
+
+  // const path = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${isAddress(
+  //   address
+  // )}/logo.png`
 
   return (
     <Inline>
