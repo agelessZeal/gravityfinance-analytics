@@ -311,7 +311,7 @@ function PairPage({ pairAddress, history }) {
             >
               <FixedPanel onClick={() => history.push(`/token/${token0?.id}`)}>
                 <RowFixed>
-                  <TokenLogo address={token0?.id} size={'16px'} />
+                  <TokenLogo address={token0?.id} size={'30px'} />
                   <TYPE.main fontSize={'16px'} lineHeight={1} fontWeight={500} ml={'4px'}>
                     {token0 && token1
                       ? `1 ${formattedSymbol0} = ${token0Rate} ${formattedSymbol1} ${
@@ -323,7 +323,7 @@ function PairPage({ pairAddress, history }) {
               </FixedPanel>
               <FixedPanel onClick={() => history.push(`/token/${token1?.id}`)}>
                 <RowFixed>
-                  <TokenLogo address={token1?.id} size={'16px'} />
+                  <TokenLogo address={token1?.id} size={'30px'} />
                   <TYPE.main fontSize={'16px'} lineHeight={1} fontWeight={500} ml={'4px'}>
                     {token0 && token1
                       ? `1 ${formattedSymbol1} = ${token1Rate} ${formattedSymbol0}  ${

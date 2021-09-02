@@ -32,7 +32,7 @@ const StyledEthereumLogo = styled.div`
   }
 `
 
-export default function TokenLogo({ address, header = false, size = '24px', ...rest }) {
+export default function TokenLogo({ address, header = false, size = '30px', ...rest }) {
   const [error, setError] = useState(false)
 
   useEffect(() => {

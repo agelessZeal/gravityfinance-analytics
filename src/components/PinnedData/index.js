@@ -125,7 +125,7 @@ function PinnedData({ history, open, setSavedOpen }) {
                   <RowBetween key={address}>
                     <ButtonFaded onClick={() => history.push('/token/' + address)}>
                       <RowFixed>
-                        <TokenLogo address={address} size={'14px'} />
+                        <TokenLogo address={address} size={'28px'} />
                         <TYPE.header ml={'6px'}>
                           <FormattedName text={token.symbol} maxCharacters={12} fontSize={'12px'} />
                         </TYPE.header>
