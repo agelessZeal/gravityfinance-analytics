@@ -124,7 +124,7 @@ function AccountPage({ account }) {
   // settings for list view and dropdowns
   const hideLPContent = positions && positions.length === 0
   const [showDropdown, setShowDropdown] = useState(false)
-  const [activePosition, setActivePosition] = useState()
+  const [activePosition, setActivePosition] = useState(null)
 
   const dynamicPositions = activePosition ? [activePosition] : positions
 
@@ -149,6 +149,7 @@ function AccountPage({ account }) {
       behavior: 'smooth',
       top: 0,
     })
+
   }, [])
 
   const below600 = useMedia('(max-width: 600px)')
@@ -243,7 +244,7 @@ function AccountPage({ account }) {
                     {activePosition && (
                       <MenuRow
                         onClick={() => {
-                          setActivePosition()
+                          setActivePosition(null)
                           setShowDropdown(false)
                         }}
                       >
@@ -295,14 +296,21 @@ function AccountPage({ account }) {
           {!hideLPContent && (
             <PanelWrapper>
               <Panel style={{ gridColumn: '1' }}>
-                {activePosition ? (
+                {/* {activePosition ? (
                   <PairReturnsChart account={account} position={activePosition} />
                 ) : (
                   <UserChart account={account} position={activePosition} />
-                )}
+                )} */}
+                {
+                  activePosition &&(
+                    <PairReturnsChart account={account} position={activePosition} />
+                  )
+                }
+                {/* <UserChart account={account} position={activePosition} /> */}
               </Panel>
             </PanelWrapper>
           )}
+
           <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '3rem' }}>
             Positions
           </TYPE.main>{' '}
@@ -313,7 +321,8 @@ function AccountPage({ account }) {
           >
             <PositionList positions={positions} />
           </Panel>
-          <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '3rem' }}>
+
+          {/* <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '3rem' }}>
             Liquidity Mining Pools
           </TYPE.main>
           <Panel
@@ -321,7 +330,7 @@ function AccountPage({ account }) {
               marginTop: '1.5rem',
             }}
           >
-            {/* {miningPositions && <MiningPositionList miningPositions={miningPositions} />}
+            {miningPositions && <MiningPositionList miningPositions={miningPositions} />}
             {!miningPositions && (
               <AutoColumn gap="8px" justify="flex-start">
                 <TYPE.main>No Staked Liquidity.</TYPE.main>
@@ -329,8 +338,8 @@ function AccountPage({ account }) {
                   <ButtonLight style={{ padding: '4px 6px', borderRadius: '4px' }}>Learn More</ButtonLight>{' '}
                 </AutoRow>{' '}
               </AutoColumn>
-            )} */}
-          </Panel>
+            )}
+          </Panel> */}
           <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '3rem' }}>
             Transactions
           </TYPE.main>{' '}
