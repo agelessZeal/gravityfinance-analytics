@@ -8,9 +8,14 @@ import copy from 'copy-to-clipboard'
 export function useColor(tokenAddress, token) {
   const [color, setColor] = useState('#ffa600')
   if (tokenAddress) {
-    const path = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${isAddress(
+
+    const path = `https://raw.githubusercontent.com/sushiswap/assets/master/blockchains/polygon/assets/${isAddress(
       tokenAddress
     )}/logo.png`
+
+    // const path = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${isAddress(
+    //   tokenAddress
+    // )}/logo.png`
     if (path) {
       Vibrant.from(path).getPalette((err, palette) => {
         if (palette && palette.Vibrant) {
