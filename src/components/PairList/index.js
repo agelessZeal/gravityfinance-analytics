@@ -202,7 +202,7 @@ function PairList({ pairs, color, disbaleLinks, maxItems = 10, useTracked = fals
           <DataText area="name" fontWeight="500">
             {!below600 && <div style={{ marginRight: '20px', width: '10px' }}>{index}</div>}
             <DoubleTokenLogo
-              size={below600 ? 16 : 20}
+              size={below600 ? 24 : 30}
               a0={pairData.token0.id}
               a1={pairData.token1.id}
               margin={!below740}
