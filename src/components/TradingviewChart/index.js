@@ -142,7 +142,7 @@ const TradingViewChart = ({
             })
           : chart.addAreaSeries({
               topColor: '#ffa600',
-              bottomColor: 'rgba(255, 0, 122, 0)',
+              bottomColor: 'rgba(255, 166, 0, 0)',
               lineColor: '#ffa600',
               lineWidth: 3,
             })
