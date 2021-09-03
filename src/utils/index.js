@@ -10,6 +10,7 @@ import _Decimal from 'decimal.js-light'
 import toFormat from 'toformat'
 import { timeframeOptions } from '../constants'
 import Numeral from 'numeral'
+import DEFAULT_TOKEN_LIST from './matic.json'
 
 // format libraries
 const Decimal = toFormat(_Decimal)
@@ -39,17 +40,24 @@ export function getTimeframe(timeWindow) {
 
 export function getPoolLink(token0Address, token1Address = null, remove = false) {
   if (!token1Address) {
+    const ethAddres =
+      DEFAULT_TOKEN_LIST.find((item) => isAddress(token0Address) === isAddress(item.address))?.address || token0Address
     return (
       `https://gravityfinance.io/` +
       (remove ? `remove` : `add`) +
-      `/${token0Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'ETH' : token0Address}/${'ETH'}`
+      `/${token0Address === '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270' ? 'ETH' : ethAddres}/${'ETH'}`
     )
   } else {
+    const ethAddres0 =
+      DEFAULT_TOKEN_LIST.find((item) => isAddress(token0Address) === isAddress(item.address))?.address || token0Address
+    const ethAddres1 =
+      DEFAULT_TOKEN_LIST.find((item) => isAddress(token1Address) === isAddress(item.address))?.address || token1Address
+
     return (
       `https://gravityfinance.io/` +
       (remove ? `remove` : `add`) +
-      `/${token0Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'ETH' : token0Address}/${
-        token1Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'ETH' : token1Address
+      `/${token0Address === '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270' ? 'ETH' : ethAddres0}/${
+        token1Address === '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270' ? 'ETH' : ethAddres1
       }`
     )
   }
@@ -60,8 +68,8 @@ export function getSwapLink(token0Address, token1Address = null) {
     return `https://gravityfinance.io/swap?inputCurrency=${token0Address}`
   } else {
     return `https://gravityfinance.io/swap?inputCurrency=${
-      token0Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'ETH' : token0Address
-    }&outputCurrency=${token1Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'ETH' : token1Address}`
+      token0Address === '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270' ? 'ETH' : token0Address
+    }&outputCurrency=${token1Address === '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270' ? 'ETH' : token1Address}`
   }
 }
 
@@ -70,7 +78,7 @@ export function getMiningPoolLink(token0Address) {
 }
 
 export function getUniswapAppLink(linkVariable) {
-  let baseUniswapUrl = 'https://gravityfinance.io/uni'
+  let baseUniswapUrl = 'https://gravityfinance.io/'
   if (!linkVariable) {
     return baseUniswapUrl
   }
