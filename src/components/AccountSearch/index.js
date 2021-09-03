@@ -99,7 +99,9 @@ function AccountSearch({ history, small }) {
                 }}
               />
             </Wrapper>
-            <ButtonLight onClick={handleAccountSearch}>Load Account Details</ButtonLight>
+            <ButtonLight color={'#ffa600'} onClick={handleAccountSearch}>
+              Load Account Details
+            </ButtonLight>
           </AutoRow>
         </>
       )}
