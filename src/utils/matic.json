@@ -8,6 +8,30 @@
     "logoURI": "https://raw.githubusercontent.com/sushiswap/icons/master/token/aave.jpg"
   },
   {
+    "address": "0x13748d548D95D78a3c83fe3F32604B4796CFfa23",
+    "chainId": 137,
+    "name": "kogecoin.io",
+    "symbol": "KOGECOIN",
+    "decimals": 18,
+    "logoURI": "https://miro.medium.com/fit/c/262/262/1*aPbZVhn0JZvGdlPycVmDzQ.png"
+  },
+  {
+    "address": "0x47536F17F4fF30e64A96a7555826b8f9e66ec468",
+    "chainId": 137,
+    "name": "BelugaToken",
+    "symbol": "BELUGA",
+    "decimals": 18,
+    "logoURI": "https://app.beluga.fi/static/media/logo.70f9bd57.png"
+  },
+  {
+    "address": "0xbc7cb585346f4f59d07121bb9ed7358076243539",
+    "chainId": 137,
+    "name": "Silver",
+    "symbol": "Silver",
+    "decimals": 18,
+    "logoURI": "https://app.beluga.fi/static/media/logo.70f9bd57.png"
+  },
+  {
     "address": "0x874e178A2f3f3F9d34db862453Cd756E7eAb0381",
     "chainId": 137,
     "name": "Gravity Finance",

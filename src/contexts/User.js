@@ -185,6 +185,7 @@ export function useUserTransactions(account) {
     }
   }, [account, transactions, updateTransactions])
 
+
   return transactions || {}
 }
 
@@ -307,6 +308,8 @@ export function useUserPositionChart(position, account) {
  */
 export function useUserLiquidityChart(account) {
   const history = useUserSnapshots(account)
+
+
   // formatetd array to return for chart data
   const [formattedHistory, setFormattedHistory] = useState()
 
@@ -326,7 +329,7 @@ export function useUserLiquidityChart(account) {
         utcStartTime = utcEndTime.subtract(1, 'year')
         break
       default:
-        utcStartTime = utcEndTime.subtract(1, 'year').startOf('year')
+        utcStartTime = utcEndTime.subtract(2, 'day').startOf('minute')
         break
     }
     let startTime = utcStartTime.unix() - 1
@@ -366,6 +369,8 @@ export function useUserLiquidityChart(account) {
       } = await client.query({
         query: PAIR_DAY_DATA_BULK(pairs, startDateTimestamp),
       })
+
+      console.log('pairDayDatas:',pairDayDatas)
 
       const formattedHistory = []
 
@@ -440,7 +445,7 @@ export function useUserLiquidityChart(account) {
     }
   }, [history, startDateTimestamp])
 
-  return formattedHistory
+  return []
 }
 
 export function useUserPositions(account) {
@@ -481,7 +486,7 @@ export function useUserPositions(account) {
     }
   }, [account, positions, updatePositions, ethPrice, snapshots])
 
-  return positions
+  return positions || []
 }
 
 export function useMiningPositions(account) {

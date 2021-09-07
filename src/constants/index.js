@@ -35,9 +35,7 @@ export const TOKEN_BLACKLIST = [
 ]
 
 // pair blacklist
-export const PAIR_BLACKLIST = [
-
-]
+export const PAIR_BLACKLIST = []
 
 // warnings to display if page contains info about blocked token
 export const BLOCKED_WARNINGS = {
@@ -53,6 +51,4 @@ export const FEE_WARNING_TOKENS = []
 export const UNTRACKED_COPY = 'Derived USD values may be inaccurate without liquid stablecoin or ETH pairings.'
 
 // tokens that should be tracked but arent due to lag in subgraph
-export const TRACKED_OVERRIDES = [
-
-]
+export const TRACKED_OVERRIDES = []

@@ -3,8 +3,6 @@ import styled from 'styled-components'
 import { isAddress } from '../../utils/index.js'
 import EthereumLogo from '../../assets/eth.png'
 
-
-
 const BAD_IMAGES = {}
 
 const Inline = styled.div`
@@ -103,6 +101,36 @@ export default function TokenLogo({ address, header = false, size = '30px', ...r
     )
   }
 
+  if (address?.toLowerCase() === '0xbc7cb585346f4f59d07121bb9ed7358076243539') {
+    return (
+      <StyledEthereumLogo size={size} {...rest}>
+        <img
+          src={'https://gravityfinance.io/silver.png'}
+          style={{
+            boxShadow: '0px 6px 10px rgba(0, 0, 0, 0.075)',
+            borderRadius: '24px',
+          }}
+          alt=""
+        />
+      </StyledEthereumLogo>
+    )
+  }
+
+  if (address?.toLowerCase() === '0x13748d548d95d78a3c83fe3f32604b4796cffa23') {
+    return (
+      <StyledEthereumLogo size={size} {...rest}>
+        <img
+          src={'https://gravityfinance.io/kogecoin.png'}
+          style={{
+            boxShadow: '0px 6px 10px rgba(0, 0, 0, 0.075)',
+            borderRadius: '24px',
+          }}
+          alt=""
+        />
+      </StyledEthereumLogo>
+    )
+  }
+
   if (address?.toLowerCase() === '0x47536f17f4ff30e64a96a7555826b8f9e66ec468') {
     return (
       <StyledEthereumLogo size={size} {...rest}>
@@ -117,7 +145,6 @@ export default function TokenLogo({ address, header = false, size = '30px', ...r
       </StyledEthereumLogo>
     )
   }
-
 
   const path = `https://raw.githubusercontent.com/sushiswap/assets/master/blockchains/polygon/assets/${isAddress(
     address

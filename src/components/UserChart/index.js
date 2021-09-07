@@ -126,8 +126,8 @@ const UserChart = ({ account }) => {
               type="monotone"
               name={'Liquidity'}
               yAxisId={0}
-              stroke={darken(0.12, 'ffa600')}
-              fill="url(#colorUv)"
+              // stroke={darken(0.12, '#ffa600')}
+              // fill="ffa600"
             />
           </AreaChart>
         </ResponsiveContainer>
