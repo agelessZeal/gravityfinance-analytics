@@ -1,7 +1,7 @@
 {
-  "name": "@uniswap/info",
+  "name": "gravityfinance/analytics",
   "private": true,
-  "homepage": "https://info.uniswap.org",
+  "homepage": "https://analytics.gravityfinance.io/",
   "devDependencies": {
     "@popperjs/core": "^2.4.2",
     "@reach/portal": "^0.10.3",
