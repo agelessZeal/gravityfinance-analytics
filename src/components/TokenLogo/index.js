@@ -101,20 +101,20 @@ export default function TokenLogo({ address, header = false, size = '30px', ...r
     )
   }
 
-  if (address?.toLowerCase() === '0xbc7cb585346f4f59d07121bb9ed7358076243539') {
-    return (
-      <StyledEthereumLogo size={size} {...rest}>
-        <img
-          src={'https://gravityfinance.io/silver.png'}
-          style={{
-            boxShadow: '0px 6px 10px rgba(0, 0, 0, 0.075)',
-            borderRadius: '24px',
-          }}
-          alt=""
-        />
-      </StyledEthereumLogo>
-    )
-  }
+  // if (address?.toLowerCase() === '0xbc7cb585346f4f59d07121bb9ed7358076243539') {
+  //   return (
+  //     <StyledEthereumLogo size={size} {...rest}>
+  //       <img
+  //         src={'https://gravityfinance.io/silver.png'}
+  //         style={{
+  //           boxShadow: '0px 6px 10px rgba(0, 0, 0, 0.075)',
+  //           borderRadius: '24px',
+  //         }}
+  //         alt=""
+  //       />
+  //     </StyledEthereumLogo>
+  //   )
+  // }
 
   if (address?.toLowerCase() === '0x13748d548d95d78a3c83fe3f32604b4796cffa23') {
     return (
@@ -136,6 +136,21 @@ export default function TokenLogo({ address, header = false, size = '30px', ...r
       <StyledEthereumLogo size={size} {...rest}>
         <img
           src={'https://app.beluga.fi/static/media/logo.70f9bd57.png'}
+          style={{
+            boxShadow: '0px 6px 10px rgba(0, 0, 0, 0.075)',
+            borderRadius: '24px',
+          }}
+          alt=""
+        />
+      </StyledEthereumLogo>
+    )
+  }
+
+  if (address?.toLowerCase() === '0x7dff46370e9ea5f0bad3c4e29711ad50062ea7a4') {
+    return (
+      <StyledEthereumLogo size={size} {...rest}>
+        <img
+          src={'https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png'}
           style={{
             boxShadow: '0px 6px 10px rgba(0, 0, 0, 0.075)',
             borderRadius: '24px',
