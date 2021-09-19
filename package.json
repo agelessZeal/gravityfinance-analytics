@@ -1,5 +1,5 @@
 {
-  "name": "gravityfinance/analytics",
+  "name": "gravityfinance-analytics",
   "private": true,
   "homepage": "https://analytics.gravityfinance.io/",
   "devDependencies": {
