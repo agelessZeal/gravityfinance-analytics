@@ -23,11 +23,7 @@ if (typeof GOOGLE_ANALYTICS_ID === 'string') {
   })
   ReactGA.set({
     anonymizeIp: true,
-    customBrowserType: !isMobile
-      ? 'desktop'
-      : 'web3' in window || 'ethereum' in window
-      ? 'mobileWeb3'
-      : 'mobileRegular',
+    customBrowserType: !isMobile ? 'desktop' : 'web3' in window || 'polygon' in window ? 'mobileWeb3' : 'mobileRegular',
   })
 } else {
   ReactGA.initialize('test', { testMode: true, debug: true })
