@@ -46,14 +46,23 @@ export default function Title() {
   return (
     <TitleWrapper onClick={() => history.push('/')}>
       <Flex alignItems="center" style={{ justifyContent: 'space-between' }}>
-        {/* <RowFixed>
-          <UniIcon id="link" onClick={() => history.push('/')}>
-            <img width={'24px'} src={Logo} alt="logo" />
-          </UniIcon>
-          {!below1080 && (
-            <img width={'84px'} style={{ marginLeft: '8px', marginTop: '0px' }} src={Wordmark} alt="logo" />
+        <RowFixed>
+          {below1080 && (
+            <UniIcon id="link" onClick={() => history.push('/')}>
+              {/* <img width={'24px'} src={Logo} alt="logo" /> */}
+              <img width={'100px'} src={require('../../assets/logo.png')} alt="logo" />
+            </UniIcon>
           )}
-        </RowFixed> */}
+
+          {!below1080 && (
+            <img
+              width={'160px'}
+              style={{ marginLeft: '0px', marginTop: '0px' }}
+              src={require('../../assets/logo.png')}
+              alt="logo"
+            />
+          )}
+        </RowFixed>
         {below1080 && (
           <RowFixed style={{ alignItems: 'flex-end' }}>
             <BasicLink to="/home">
