@@ -48,19 +48,20 @@ export default function Title() {
       <Flex alignItems="center" style={{ justifyContent: 'space-between' }}>
         <RowFixed>
           {below1080 && (
-            <UniIcon id="link" onClick={() => history.push('/')}>
-              {/* <img width={'24px'} src={Logo} alt="logo" /> */}
+            <a id="link" target="_blank" href="https://gravityfinance.io">
               <img width={'100px'} src={require('../../assets/logo.png')} alt="logo" />
-            </UniIcon>
+            </a>
           )}
 
           {!below1080 && (
-            <img
-              width={'160px'}
-              style={{ marginLeft: '0px', marginTop: '0px' }}
-              src={require('../../assets/logo.png')}
-              alt="logo"
-            />
+            <a id="link" target="_blank" href="https://gravityfinance.io">
+              <img
+                width={'160px'}
+                style={{ marginLeft: '0px', marginTop: '0px' }}
+                src={require('../../assets/logo.png')}
+                alt="logo"
+              />
+            </a>
           )}
         </RowFixed>
         {below1080 && (
