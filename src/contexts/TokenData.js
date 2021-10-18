@@ -229,7 +229,7 @@ const getTopTokens = async (ethPrice, ethPriceOld) => {
 
   try {
     // need to get the top tokens by liquidity by need token day datas
-    const currentDate = parseInt(Date.now() / 86400 / 1000) * 86400 - 86400
+    const currentDate = parseInt(Date.now() / 86400 / 1000) * 86400 - 86400 - 86400 - 86400
 
     let tokenids = await client.query({
       query: TOKEN_TOP_DAY_DATAS,
@@ -247,10 +247,21 @@ const getTopTokens = async (ethPrice, ethPriceOld) => {
       fetchPolicy: 'cache-first',
     })
 
-    let oneDayResult = await client.query({
-      query: TOKENS_HISTORICAL_BULK(ids, oneDayBlock),
-      fetchPolicy: 'cache-first',
-    })
+    let oneDayResult
+
+    try {
+      oneDayResult = await client.query({
+        query: TOKENS_HISTORICAL_BULK(ids, oneDayBlock),
+        fetchPolicy: 'cache-first',
+      })
+    } catch (error) {
+      oneDayResult = current
+    }
+
+    // let oneDayResult = await client.query({
+    //   query: TOKENS_HISTORICAL_BULK(ids, oneDayBlock),
+    //   fetchPolicy: 'cache-first',
+    // })
 
     let twoDayResult = await client.query({
       query: TOKENS_HISTORICAL_BULK(ids, twoDayBlock),
@@ -278,11 +289,19 @@ const getTopTokens = async (ethPrice, ethPriceOld) => {
 
           // catch the case where token wasnt in top list in previous days
           if (!oneDayHistory) {
-            let oneDayResult = await client.query({
-              query: TOKEN_DATA(token.id, oneDayBlock),
-              fetchPolicy: 'cache-first',
-            })
-            oneDayHistory = oneDayResult.data.tokens[0]
+            try {
+              let oneDayResult = await client.query({
+                query: TOKEN_DATA(token.id, oneDayBlock),
+                fetchPolicy: 'cache-first',
+              })
+              oneDayHistory = oneDayResult.data.tokens[0]
+            } catch (error) {
+              let oneDayResult = await client.query({
+                query: TOKEN_DATA(token.id),
+                fetchPolicy: 'cache-first',
+              })
+              oneDayHistory = oneDayResult.data.tokens[0]
+            }
           }
           if (!twoDayHistory) {
             let twoDayResult = await client.query({

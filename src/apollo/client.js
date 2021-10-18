@@ -39,5 +39,4 @@ export const blockClient = new ApolloClient({
     uri: 'https://api.thegraph.com/subgraphs/name/lufycz/blocklytics-matic',
   }),
   cache: new InMemoryCache(),
-
 })

@@ -195,15 +195,56 @@ async function getBulkPairData(pairList, ethPrice) {
       fetchPolicy: 'cache-first',
     })
 
-    let [oneDayResult, twoDayResult, oneWeekResult] = await Promise.all(
-      [b1, b2, bWeek].map(async (block) => {
-        let result = client.query({
-          query: PAIRS_HISTORICAL_BULK(block, pairList),
-          fetchPolicy: 'cache-first',
-        })
-        return result
+    let oneDayResult, twoDayResult, oneWeekResult
+
+    try {
+      oneDayResult = client.query({
+        query: PAIRS_HISTORICAL_BULK(b2, pairList),
+        fetchPolicy: 'cache-first',
       })
-    )
+    } catch (error) {
+      console.log('PAIRS_HISTORICAL_BULK oneDayResult:', error)
+      // oneDayResult = client.query({
+      //   query: PAIRS_HISTORICAL_BULK(b2, pairList),
+      //   fetchPolicy: 'cache-first',
+      // })
+    }
+
+    try {
+      twoDayResult = client.query({
+        query: PAIRS_HISTORICAL_BULK(b2, pairList),
+        fetchPolicy: 'cache-first',
+      })
+    } catch (error) {
+      console.log('PAIRS_HISTORICAL_BULK twoDayResult:', error)
+    }
+
+    try {
+      oneWeekResult = client.query({
+        query: PAIRS_HISTORICAL_BULK(bWeek, pairList),
+        fetchPolicy: 'cache-first',
+      })
+    } catch (error) {
+      console.log('PAIRS_HISTORICAL_BULK oneWeekResult:', error)
+    }
+
+    // let [oneDayResult, twoDayResult, oneWeekResult] = await Promise.all(
+    //   [b1, b2, bWeek].map(async (block) => {
+    //     try {
+    //       let result = client.query({
+    //         query: PAIRS_HISTORICAL_BULK(block, pairList),
+    //         fetchPolicy: 'cache-first',
+    //       })
+    //       return result
+    //     } catch (error) {
+    //       let result = client.query({
+    //         query: PAIRS_HISTORICAL_BULK(block, pairList),
+    //         fetchPolicy: 'cache-first',
+    //       })
+    //       return result
+    //     }
+    //   })
+    // )
 
     let oneDayData = oneDayResult?.data?.pairs.reduce((obj, cur, i) => {
       return { ...obj, [cur.id]: cur }
@@ -224,7 +265,7 @@ async function getBulkPairData(pairList, ethPrice) {
           let oneDayHistory = oneDayData?.[pair.id]
           if (!oneDayHistory) {
             let newData = await client.query({
-              query: PAIR_DATA(pair.id, b1),
+              query: PAIR_DATA(pair.id, b2),
               fetchPolicy: 'cache-first',
             })
             oneDayHistory = newData.data.pairs[0]
@@ -245,7 +286,7 @@ async function getBulkPairData(pairList, ethPrice) {
             })
             oneWeekHistory = newData.data.pairs[0]
           }
-          data = parseData(data, oneDayHistory, twoDayHistory, oneWeekHistory, ethPrice, b1)
+          data = parseData(data, oneDayHistory, twoDayHistory, oneWeekHistory, ethPrice, b2)
           return data
         })
     )

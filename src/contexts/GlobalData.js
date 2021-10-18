@@ -249,18 +249,29 @@ async function getGlobalData(ethPrice, oldEthPrice) {
     })
     data = result.data.uniswapFactories[0]
 
-    // fetch the historical data
-    let oneDayResult = await client.query({
-      query: GLOBAL_DATA(oneDayBlock?.number),
-      fetchPolicy: 'cache-first',
-    })
-    oneDayData = oneDayResult.data.uniswapFactories[0]
+    try {
+      // fetch the historical data
+      let oneDayResult = await client.query({
+        query: GLOBAL_DATA(oneDayBlock?.number),
+        fetchPolicy: 'cache-first',
+      })
+      oneDayData = oneDayResult.data.uniswapFactories[0]
+    } catch (error) {
+      console.log('oneDayResult GLOBAL_DATA error:', error)
+      oneDayData = data
+    }
 
-    let twoDayResult = await client.query({
-      query: GLOBAL_DATA(twoDayBlock?.number),
-      fetchPolicy: 'cache-first',
-    })
-    twoDayData = twoDayResult.data.uniswapFactories[0]
+    try {
+      let twoDayResult = await client.query({
+        query: GLOBAL_DATA(twoDayBlock?.number),
+        fetchPolicy: 'cache-first',
+      })
+      twoDayData = twoDayResult.data.uniswapFactories[0]
+
+      oneDayData = twoDayData
+    } catch (error) {
+      twoDayData = oneDayData
+    }
 
     let oneWeekResult = await client.query({
       query: GLOBAL_DATA(oneWeekBlock?.number),
@@ -274,9 +285,7 @@ async function getGlobalData(ethPrice, oldEthPrice) {
     })
     const twoWeekData = twoWeekResult.data.uniswapFactories[0]
 
-    console.log('twoWeekData:',twoWeekData)
-
-    if (data && oneDayData && twoDayData ) {
+    if (data && oneDayData && twoDayData) {
       let [oneDayVolumeUSD, volumeChangeUSD] = get2DayPercentChange(
         data.totalVolumeUSD,
         oneDayData.totalVolumeUSD,
@@ -483,14 +492,20 @@ const getEthPrice = async () => {
 
   try {
     let oneDayBlock = await getBlockFromTimestamp(utcOneDayBack)
+    oneDayBlock += 6
     let result = await client.query({
       query: ETH_PRICE(),
       fetchPolicy: 'cache-first',
     })
-    let resultOneDay = await client.query({
-      query: ETH_PRICE(oneDayBlock),
-      fetchPolicy: 'cache-first',
-    })
+
+    let resultOneDay = result
+    try {
+      resultOneDay = await client.query({
+        query: ETH_PRICE(oneDayBlock),
+        fetchPolicy: 'cache-first',
+      })
+    } catch (error) {}
+
     const currentPrice = result?.data?.bundles[0]?.ethPrice
     const oneDayBackPrice = resultOneDay?.data?.bundles[0]?.ethPrice
     priceChangeETH = getPercentChange(currentPrice, oneDayBackPrice)
