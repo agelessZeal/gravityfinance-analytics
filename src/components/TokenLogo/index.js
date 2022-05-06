@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { isAddress } from '../../utils/index.js'
 import EthereumLogo from '../../assets/eth.png'
+import gamestate from '../../assets/gamestate.png'
 
 const BAD_IMAGES = {}
 
@@ -61,6 +62,21 @@ export default function TokenLogo({ address, header = false, size = '30px', ...r
       <StyledEthereumLogo size={size} {...rest}>
         <img
           src={EthereumLogo}
+          style={{
+            boxShadow: '0px 6px 10px rgba(0, 0, 0, 0.075)',
+            borderRadius: '24px',
+          }}
+          alt=""
+        />
+      </StyledEthereumLogo>
+    )
+  }
+
+  if (address?.toLowerCase() === '0xF10e7f2DAf275C7003266f29A19FB2Ef7f3CC977'.toLowerCase()) {
+    return (
+      <StyledEthereumLogo size={size} {...rest}>
+        <img
+          src={gamestate}
           style={{
             boxShadow: '0px 6px 10px rgba(0, 0, 0, 0.075)',
             borderRadius: '24px',
